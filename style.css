@@ -1,0 +1,42 @@
+*{
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.tank{
+    /*background-color: #000;*/
+    width: 50px;
+    position: absolute;
+    top: 200px;
+    left: 150px;
+    height: 40px;
+    transition: top 300ms linear , left 300ms linear;
+}
+
+.tank img{
+    width: 50px;
+}
+
+img.fire-tracker{
+    width: 15px;
+    height: 3px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+}
+
+#ammo-pos img{
+    width: 25px;
+    height: 5px;
+}
+
+img.fire{
+    width: 25px;
+    height: 5px;
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
