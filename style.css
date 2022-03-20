@@ -9,8 +9,9 @@
     /*background-color: #000;*/
     width: 50px;
     position: absolute;
+    z-index: 999;
     top: 200px;
-    left: 150px;
+    left: 650px;
     height: 40px;
     transition: top 300ms linear , left 300ms linear;
 }
@@ -33,10 +34,28 @@ img.fire-tracker{
     height: 5px;
 }
 
+#rocket-pos img{
+    width: 50px;
+}
+
+img.rocket{
+    width: 50px;
+    position: absolute;
+    z-index: 1;
+    top: 40px;
+    left: 40px;
+}
+
+img.rocket:first-child{
+    top: 80px;
+    left: 40px;
+}
+
 img.fire{
     width: 25px;
     height: 5px;
     position: absolute;
+    z-index: 1;
     top: 40px;
     left: 40px;
 }
