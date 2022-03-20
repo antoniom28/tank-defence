@@ -208,6 +208,7 @@ function tankFire(){
                     finalY : rockets[i].offsetTop + Math.abs(rockets[i].offsetWidth*Math.sin(angleCalc)),
                 };
 
+                
                 let ammoHitBox = {
                     startX : ammo.offsetLeft,
                     finalX : ammo.offsetLeft + 5,
