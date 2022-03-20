@@ -1,5 +1,5 @@
 let tank = document.getElementById('tank');
-let rockets = document.querySelector('.rocket');
+let rockets = document.querySelectorAll('.rocket');
 
 //rockets variables
 let rocketOrigin = [];
@@ -29,10 +29,18 @@ window.addEventListener("keyup", tankMovement , true);
 
 let tankSpeed = 60;
 
+
+rocketSpawn();
 rocketRotation();
 
 function rocketSpawn(){
-
+    //for(let i=0; i<rockets.length;  i++){
+        console.log(rockets);
+        rockets[1].style.left = "40px";
+        rockets[1].style.top = "40px";
+        rockets[0].style.left = "40px";
+        rockets[0].style.top = "300px";
+   // }
 }
 
 function tankMovement(){
@@ -208,28 +216,42 @@ function tankFire(){
                     finalY : rockets[i].offsetTop + Math.abs(rockets[i].offsetWidth*Math.sin(angleCalc)),
                 };
 
-                
+                if(rocketHitBox.finalY - rocketHitBox.startY < 10){
+                    rocketHitBox.startY = rockets[i].offsetTop - 15;
+                    rocketHitBox.finalY = rockets[i].offsetTop + 15;
+                }
+
+
                 let ammoHitBox = {
                     startX : ammo.offsetLeft,
                     finalX : ammo.offsetLeft + 5,
                     startY : ammo.offsetTop,
                     finalY : ammo.offsetTop + 5,
                 };
-               console.log(rocketHitBox , ammoHitBox);
+             //  console.log('missile:',i,rocketHitBox , ammoHitBox);
                 if(
                     (ammoHitBox.startX >= rocketHitBox.startX && ammoHitBox.startX <= rocketHitBox.finalX)
                     &&
-                    (ammoHitBox.startY >= rocketHitBox.startY && ammoHitBox.startY <= rocketHitBox.finalY)
+                    ((ammoHitBox.startY >= rocketHitBox.startY && ammoHitBox.startY <= rocketHitBox.finalY)
+                    ||
+                    (ammoHitBox.finalY >= rocketHitBox.startY && ammoHitBox.finalY <= rocketHitBox.finalY))
                     //a <= ammoHitBox.startX <= b
                 ){
-                    console.log('missile colpito');
+                    console.log('missile colpito' , i);
+                    console.log('rimuovo',rockets[i]);
                     rockets[i].parentNode.removeChild(rockets[i]);
+                   // if(rockets.length <= 0){
                     clearInterval(ammoTracker);
-                    break;
+                    setTimeout(() => {
+                        noClick = false;
+                    }, 100);
+                    ammoPos.innerHTML = "";
+                        break;
+                  //  }
                 }
 
             }
-        }, 20);
+        }, 50);
 
         setTimeout(() => {
             ammo.style.transition=`all ${ammoTime}s linear`;
