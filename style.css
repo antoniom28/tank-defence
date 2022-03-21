@@ -20,23 +20,14 @@
     width: 50px;
     position: absolute;
     z-index: 999;
-    top: 200px;
-    left: 650px;
+    top: 40px;
+    left: 40px;
     height: 40px;
     transition: top 300ms linear , left 300ms linear;
 }
 
 .tank img{
     width: 50px;
-}
-
-img.fire-tracker{
-    width: 15px;
-    height: 3px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50% , -50%);
 }
 
 #ammo-pos img{
@@ -63,4 +54,85 @@ img.fire{
     z-index: 1;
     top: 40px;
     left: 40px;
+}
+
+#main-menu{
+    text-align: center;
+    line-height: 2;
+    font-size: 1.2em;
+    width: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+    height: 90%;
+    background: rgba(184, 184, 184, 0.9);
+    z-index: 9999;
+}
+
+#main-menu p{
+    font-size: 1.2em;
+}
+
+div.button{
+    margin-top: 20px!important;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    width: 100px;
+    min-height: 30px;
+    background-color: rgb(0, 185, 0);
+    border: 2px outset green;
+}
+
+div.button:hover{
+    transform: scale(1.1);
+    border: 2px inset green;
+}
+
+#game-start{
+    /*display: flex;*/
+    display: none;
+    width: 400px;
+    z-index: 9999;
+    height: 200px;
+    color: rgba(255, 0, 0, 0.8);
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+}
+
+#round-box{
+    display: none;
+    position: absolute;
+    z-index: 9999;
+    top: 50%;
+    color: rgba(255, 0, 0, 0.7);
+    left: 50%;
+    transform: translate(-70% , -50%);
+    animation: slide-to-right 1s linear forwards;
+}
+
+@keyframes slide-to-right {
+    to{
+        transform: translate(-30% , -50%);
+    }
+}
+
+#score-plus{
+    color: red;
+    position: absolute;
+    animation: score-plus 350ms linear forwards;
+    transform: scale(0.8);
+}
+
+@keyframes score-plus {
+    to{
+        transform: scale(1.2);
+    }
 }

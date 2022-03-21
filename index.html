@@ -8,10 +8,36 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="field">
+    <div id="field" class="field">
+        <div id="spawn-score">
+
+        </div>
+
+        <div id="main-menu">
+            <h1>COME GIOCARE</h1>
+            <p>punta e clicca</p>
+            <p>posiziona il carro con w,a,s,d (meglio al centro)</p>
+            <p>perché non puoi più muoverti quando il gioco inizia (causa bug)</p>
+            <p>premi SPACE per iniziare, le ondate aumentano man mano di difficoltà</p>
+            <p>Attenzione, le hitbox dei missili sono molto piccole, e dipendono dalla loro angolazione</p>
+            <div onclick="startGame()" class="button">
+                VAI
+            </div>
+            <div onclick="goToCenter()" class="button">
+                VAI AL CENTRO
+            </div>
+        </div>
+
+        <div id="game-start">
+            <h1>GAME START !</h1>
+        </div>
+
+       <div id="round-box">
+            <h1 id="round">ROUND 1</h1>
+       </div>
+
         <div id="tank" class="tank">
             <img src="images/tank_0.png" alt="">
-            <!--<img class="fire-tracker" id="ammo-tracker" src="images/fire.png" alt="">-->
         </div>
     
         <div id="ammo-pos">
@@ -19,9 +45,6 @@
         </div>
     
         <div id="rocket-pos">
-            <img class="rocket" src="images/rocket_0.jpg" alt="">
-    
-            <img class="rocket" src="images/rocket_0.jpg" alt="">
         </div>
     </div>   
 
