@@ -36,7 +36,7 @@ function goToCenter(){
         tankLeft = tank.offsetLeft;
         tankW = tank.offsetWidth;
         tankH = tank.offsetHeight;
-        console.log(tankTop , tankLeft);
+        //console.log(tankTop , tankLeft);
         origin = {x: tank.offsetLeft + tank.offsetWidth/2 , y: tank.offsetTop + tank.offsetHeight/2};
         startGame();
     }, 1000);
@@ -64,7 +64,8 @@ function rocketSpawn(){
         for(let i=0; i<horde; i++){
             let newRocket = document.createElement('img');
             newRocket.className += " rocket";
-            newRocket.src="images/rocket_0.jpg";
+            let rocketType = Math.floor(Math.random()*3);
+            newRocket.src=`images/rocket_${rocketType}.jpg`;
             rocketPos.append(newRocket);
         }
         rockets = document.querySelectorAll('.rocket');
@@ -82,7 +83,7 @@ function rocketSpawn(){
                 y : topSpawn == 0 ? (maxH + costSpawn) : (0 - costSpawn),
             };
 
-            console.log(leftSpawn , spawnPoint);
+            //console.log(leftSpawn , spawnPoint);
             rockets[i].style.left = `${spawnPoint.x}px`;
             rockets[i].style.top = `${spawnPoint.y}px`;
         } 
@@ -293,7 +294,7 @@ function tankFire(){
                     finalY : rockets[i].offsetTop + Math.abs(rockets[i].offsetWidth*Math.sin(angleCalc)),
                 };
 
-                if(rocketHitBox.finalY - rocketHitBox.startY < 10){
+                if(rocketHitBox.finalY - rocketHitBox.startY < 20){
                     rocketHitBox.startY = rockets[i].offsetTop - 15;
                     rocketHitBox.finalY = rockets[i].offsetTop + 15;
                 }
@@ -305,7 +306,7 @@ function tankFire(){
                     startY : ammo.offsetTop,
                     finalY : ammo.offsetTop + 5,
                 };
-             //  console.log('missile:',i,rocketHitBox , ammoHitBox);
+             //console.log('missile:',i,rocketHitBox);
                 if(
                     (ammoHitBox.startX >= rocketHitBox.startX && ammoHitBox.startX <= rocketHitBox.finalX)
                     &&
@@ -314,7 +315,9 @@ function tankFire(){
                     (ammoHitBox.finalY >= rocketHitBox.startY && ammoHitBox.finalY <= rocketHitBox.finalY))
                     //a <= ammoHitBox.startX <= b
                 ){
-                    console.log('missile colpito' , i);
+                    //console.log('missile colpito' , i);
+                    clearInterval(ammoTracker);
+                    noClick = false;
                     document.getElementById('spawn-score').innerHTML = "";
                     let newScore = document.createElement('h3');
                     newScore.id = "score-plus";
@@ -325,17 +328,13 @@ function tankFire(){
                     hitted = true;
                     rockets[i].parentNode.removeChild(rockets[i]);
                    // if(rockets.length <= 0){
-                    clearInterval(ammoTracker);
-                    setTimeout(() => {
-                        noClick = false;
-                    }, 0);
                     ammoPos.innerHTML = "";
                         break;
                   //  }
                 }
 
             }
-        }, 20);
+        }, 10);
 
         setTimeout(() => {
             ammo.style.transition=`all ${ammoTime}s linear`;
@@ -343,7 +342,7 @@ function tankFire(){
             ammo.style.left = `${finalX}px`;
         }, 0);
 
-        console.log(rockets);
+        //console.log(rockets);
         setTimeout(() => {
             if(!hitted){
                 clearInterval(ammoTracker);
