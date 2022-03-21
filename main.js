@@ -1,4 +1,9 @@
 let tank = document.getElementById('tank');
+let tankGenerate = document.createElement('img');
+let tankType = Math.floor(Math.random()*3);
+tankGenerate.src=`images/tank_${tankType}.png`;
+tank.append(tankGenerate);
+
 let rockets = document.querySelectorAll('.rocket');
 
 //rockets variables

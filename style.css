@@ -19,9 +19,9 @@
     /*background-color: #000;*/
     width: 50px;
     position: absolute;
-    z-index: 999;
-    top: 40px;
-    left: 40px;
+    z-index: 9998;
+    top: 100px;
+    left: 100px;
     height: 40px;
     transition: top 300ms linear , left 300ms linear;
 }
@@ -67,7 +67,7 @@ img.fire{
     transform: translate(-50% , -50%);
     height: 90%;
     background: rgba(184, 184, 184, 0.9);
-    z-index: 9999;
+    z-index: 9997;
 }
 
 #main-menu p{
